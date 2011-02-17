@@ -1,7 +1,7 @@
 $count = 0
 module Home
-  get '/:document' do
-    raise "the requested document does not exist yet" if param['document'].to_i <= $count 
+  get '/:document' do 
+    raise "the requested document does not exist yet" if params['document'].to_i > $count
     response.headers['Cache-Control'] = 'public, max-age=300'
     flash[:data]
   end
@@ -12,3 +12,4 @@ module Home
     $count.to_s
   end
 end
+
