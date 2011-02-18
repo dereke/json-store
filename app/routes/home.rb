@@ -9,7 +9,7 @@ module Home
   post '/' do
     $count = $count+1
     session["data#{$count}"] = request.env["rack.input"].read
-    $count.to_s
+    "http://json-store.heroku.com/#{$count.to_s}"
   end
 end
 
