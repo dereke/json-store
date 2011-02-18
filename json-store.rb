@@ -5,9 +5,9 @@ end
 enable :sessions
 set :views, File.dirname(__FILE__) + "/views"
 
+
 module JsonStore
   class Application < Sinatra::Application
-    use Rack::Flash
     include Home
   end
 end

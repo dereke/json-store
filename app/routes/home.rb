@@ -3,12 +3,12 @@ module Home
   get '/:document' do 
     raise "the requested document does not exist yet" if params['document'].to_i > $count
     response.headers['Cache-Control'] = 'public, max-age=300'
-    flash[:data]
+    session["data#{params['document']}"]
   end
 
   post '/' do
-    flash[:data] = request.env["rack.input"].read
     $count = $count+1
+    session["data#{$count}"] = request.env["rack.input"].read
     $count.to_s
   end
 end
